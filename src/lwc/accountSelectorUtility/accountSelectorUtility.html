@@ -1,0 +1,9 @@
+<template>
+    <ul class="slds-has-dividers_top slds-has-block-links_space">
+        <template for:each={accounts} for:item="account">
+            <li key={account.Id} class="slds-item">
+                <a href={account.link}>{ account.Name }</a>
+            </li>
+        </template>
+    </ul>
+</template>

@@ -1,0 +1,15 @@
+
+1. Data Modeling
+
+2. Redux
+
+    - https://www.lwc-redux.com/
+    - sfdx force:package:install --package 04t2v000007GTFkAAO
+
+    2.1. Store
+    2.2. Reducers
+    2.3. Actions
+
+3. Pubsup
+
+4. Platform Events

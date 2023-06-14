@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-grid slds-grid_reverse" style="width: 60%;">
+        <template if:false={props.isLoading}>
+            <template for:each={props.groupedAccounts} for:item="account">
+                <div key={account.typeCount} class="slds-col slds-align_absolute-center" style="margin-bottom:60px;">
+                    <div style="height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <div class="slds-align_absolute-center" data-type={account.Type} style={account.style} onclick={handlePopover}>
+                            <div class="slds-text-heading_large">{account.typeCount}</div>
+                        </div>
+                        <div style="height: 30px;" class="slds-text-title_caps slds-m-top_x-small"><b>{account.Type}</b></div>
+                    </div>
+                </div>
+            </template>
+        </template>
+        <template if:true={selectedRecords}>
+            <c-account-details-popover
+                section-name={type}
+                top={top} 
+                left={left} 
+                onclose={handleClosePopover} 
+                records={selectedRecords}
+            ></c-account-details-popover>
+        </template>
+    </div>
+</template>

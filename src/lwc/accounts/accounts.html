@@ -1,0 +1,28 @@
+<template>
+    <template if:true={isAsync}>
+        <c-platform-event-subscriber onclose={handleCloseSubscriber}></c-platform-event-subscriber>
+    </template>
+    <template if:true={props.isOpenEditor}>
+        <c-account-editor></c-account-editor>
+    </template>
+    <lightning-card title="Accounts" icon-name="standard:account">
+        <lightning-button-group slot="actions">
+            <lightning-button label="New" onclick={handleIsNew}></lightning-button>
+            <lightning-button label="Async" onclick={handleOpenSubscriber}></lightning-button>
+        </lightning-button-group>
+        <div style="height: 500px;">
+            <template if:true={props.isLoading}>
+                <lightning-spinner class="slds-align_absolute-center" variant="brand" size="large"> </lightning-spinner>
+            </template>
+            <template if:false={props.isLoading}>
+                <c-account-details></c-account-details>
+                <lightning-datatable
+                        key-field="id"
+                        data={props.accounts}
+                        columns={columns}
+                        onrowaction={handleRowAction}>
+                </lightning-datatable>
+            </template>
+        </div>
+    </lightning-card>
+</template>

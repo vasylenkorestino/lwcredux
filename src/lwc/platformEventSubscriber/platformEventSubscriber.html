@@ -1,0 +1,29 @@
+<template>
+    <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <div class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                <lightning-button-icon icon-name="utility:close"  alternative-text="Settings" title="Settings" onclick={handleClose}></lightning-button-icon>
+            </div>
+            
+            <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Async Job</h1>
+            </div>
+            <div style="height: 250px;" class="slds-modal__content slds-p-around_medium slds-is-relative">
+                <template if:true={isLoading}>
+                    <lightning-spinner class="slds-align_absolute-center" variant="brand" size="large"> </lightning-spinner>
+                </template>
+                <template if:false={isLoading}>
+                    <template for:each={results} for:item="result">
+                        <div 
+                            key={result.Message__c} 
+                            style="height: 200px; color: rgb(29, 199, 29)"
+                            class="slds-text-heading_medium slds-align_absolute-center">
+                            {result.Message__c}
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+</template>
